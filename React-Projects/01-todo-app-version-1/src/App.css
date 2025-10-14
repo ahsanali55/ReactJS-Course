@@ -1,0 +1,31 @@
+h1{
+    font-weight: 700;
+    font-size: 45px;
+    margin: 10px;
+    margin-bottom: 20px;
+}
+.todo-container{
+    text-align: left;
+}
+.itemsContainer{
+    width: 100%;
+    max-width: 1080px;
+    margin-inline: auto;
+}
+.kg-row{
+    text-align: left;
+    margin: 10px 5px;
+}
+.inputItem{
+    
+    width: 97%;
+    margin: 10px 15px;
+
+    
+}
+input{
+    width: 100%;
+}
+.kg-button{
+    min-width: 80px;
+}
