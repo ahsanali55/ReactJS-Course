@@ -5,11 +5,11 @@ function AddTodo() {
     return (
         <>
          {/* ==== row 1 start ==== */}
-          <div className={`row inputItem ${style['kgrow inputItem']}`} >
-            <div className="col-6">
+          <div className={`row ${style['kgrow']} ${style['inputItem']}`} >
+            <div className={`col-6 }`} >
               <input type="text" name="" placeholder="Enter Todo Here" id="" />
             </div>
-            <div className="col-4">
+            <div className={`col-4 }`}>
               <input type="date" name="" id="" />
             </div>
             <div className="col-2">

@@ -1,5 +1,5 @@
 let ErrorMessage = (Props) => {
-    let {foodItem} = Props; // detructuring props
+    let {foodItems} = Props; // detructuring props
     
     // Conditional rendering
 
@@ -12,7 +12,7 @@ let ErrorMessage = (Props) => {
         <>
         {/* {emptyMessage} */}
       {/* // Logical Operator  */}
-      {foodItem.length === 0 && <h1>I'm still hungry!</h1>}
+      {foodItems.length === 0 && <h1>I'm still hungry!</h1>}
         </>
     )
 }

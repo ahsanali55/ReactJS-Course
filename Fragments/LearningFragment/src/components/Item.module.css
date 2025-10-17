@@ -1,5 +1,11 @@
-.kg-item{
-  background-color: blueviolet;
+.kgItem{
+  background-color: rgb(236, 188, 134);
   color: black;
   font-size: 1.3rem;
+  color: brown;
+  display: flex;
+  justify-content: space-between;
+}
+.button{
+  
 }

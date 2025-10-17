@@ -1,11 +1,14 @@
+import React from 'react';
+import styles from './TodoItem.module.css'
+
 function TodoItem({todoName, todoDate}) {
    
     return (
         <>
-        <div className="text-center container">
+        <div className="text-center container " >
 
           {/* ==== row 2 Start ==== */}
-          <div className="row kg-row">
+          <div className={`row ${styles['kgrow']}`} >
             <div className="col-6">{todoName}</div>
             <div className="col-4">{todoDate}</div>
             <div className="col-2">

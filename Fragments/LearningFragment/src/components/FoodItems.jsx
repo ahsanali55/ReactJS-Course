@@ -1,13 +1,18 @@
 import ErrorMessage from "./ErrorMessage";
 import Item from "./Item";
 
-function FoodItems({foodItem}) {
- 
+function FoodItems({ foodItems }) {
   return (
     <>
       <ul className="list-group">
-        {Array.from(foodItem).map((item) => (
-          <Item key={item} foodItem={item}/>
+        {Array.from(foodItems).map((item) => (
+          <Item
+            key={item}
+            foodItems={item}
+            handleBuyButtonClick={() => {
+              console.log(`${item} being bought!`);
+            }}
+          />
         ))}
       </ul>
     </>
