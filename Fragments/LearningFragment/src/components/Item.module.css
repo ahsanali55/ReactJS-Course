@@ -1,11 +1,16 @@
 .kgItem{
-  background-color: rgb(236, 188, 134);
+  
   color: black;
   font-size: 1.3rem;
   color: brown;
   display: flex;
   justify-content: space-between;
 }
-.button{
-  
+.buttonStyle{
+  color: white;
+  background-color: blueviolet;
+}
+.buyItem{
+    background-color: cadetblue;
+    color: white;
 }

@@ -8,27 +8,38 @@ import Container from "./components/Container";
 import FoodInput from "./components/FoodInput";
 
 function App() {
-  const foodItems = [
-    "Dal",
-    "Fruits",
-    "Vegetables",
-    "Dry-Fruits",
-    "Milk",
-    "Salad",
-  ];
+ 
+  
+  // Use State Hook
+  // let textStateArr = useState("Food Item Entered by user");
+  // let textToShow = textStateArr[0];  // value
+  // let setStateMethod = textStateArr[1];  // Method
+  
+  let [textToShow, setTextState] = useState();
+  let [foodItems, setFoodState] = useState([
+    
+    ]);
 
-  let handleOnChangeInput = ((event) => {
-    console.log(event.target.value)
+    
+    
+    const handleOnKeyDown = ((event) => {
+    if (event.key === "Enter"){
+      let newfoodItem = event.target.value;
+      let newItems = [...foodItems, newfoodItem];
+      setFoodState(newItems)
+      console.log(newfoodItem);
+    }
+    
+   
   })
-  let textToShow = "Food Item Entered by user"; 
 
   return (
     <>
       <Container>
         <h1>Healthy Food</h1>
-        <p>{textToShow}</p>
+        <FoodInput handleOnKeyDown={handleOnKeyDown} />
         <ErrorMessage foodItems={foodItems} />
-        <FoodInput handleOnChangeInput={handleOnChangeInput} />
+        
         <FoodItems foodItems={foodItems} />
       </Container>
 
