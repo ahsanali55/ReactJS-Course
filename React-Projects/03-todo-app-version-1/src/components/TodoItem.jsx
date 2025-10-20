@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./TodoItem.module.css";
+import { MdDeleteSweep } from "react-icons/md";
 
-function TodoItem({ todoName, todoDate, handleDeleteItem }) {
+function TodoItem({ todoName, todoDate, onDeleteClick }) {
   return (
     <>
       <div className="text-center container ">
@@ -13,9 +14,12 @@ function TodoItem({ todoName, todoDate, handleDeleteItem }) {
             <button
               type="btn"
               className="btn btn-danger kg-button"
-              onClick={handleDeleteItem}
+              onClick={() => {
+                onDeleteClick(todoName, todoDate)
+              }
+              }
             >
-              Delete
+            <MdDeleteSweep className={styles.Delete}/>  
             </button>
           </div>
         </div>

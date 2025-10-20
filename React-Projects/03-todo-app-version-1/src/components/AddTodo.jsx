@@ -1,42 +1,59 @@
-import { useState } from "react";
+import { useRef } from "react";
 import style from "./AddTodo.module.css";
+import { MdFormatListBulletedAdd } from "react-icons/md";
 
-function AddTodo({onNewItem}) { 
-
-  const [todoName, setTodoName] = useState();
-  const [dueDate, setDueDate] = useState();
-
-  const handleNameChange = (event) => {
-     setTodoName(event.target.value);
-  }
-  const handleDateChange = (event) => {
-    setDueDate(event.target.value);
-  }
-  const handleAddButtonClicked = () => {
+function AddTodo({ onNewItem }) {
+  
+  const todoNameElement = useRef();
+  const dueDateElement = useRef();
+ 
+  const handleAddButtonClicked = (event) => {
+    event.preventDefault();
+    const todoName = todoNameElement.current.value;
+    const dueDate = dueDateElement.current.value;
     onNewItem(todoName, dueDate);
-    setTodoName("");
-    setDueDate("");
-  }
-    return (
-        <>
-         {/* ==== row 1 start ==== */}
-          <div className={`row ${style['kgrow']} ${style['inputItem']}`}  >
-            <div className={`col-6 }`} >
-              <input type="text" name="" placeholder="Enter Todo Here" id="" value={todoName} onChange={handleNameChange} />
-            </div>
-            <div className={`col-4 }`}>
-              <input type="date" name="" id="" value={dueDate} onChange={handleDateChange}/>
-            </div>
-            <div className="col-2">
-              <button type="button" className= {`btn btn-success ${style['kgbutton']}`} 
-              onClick={handleAddButtonClicked}
-              >
-                Add
-              </button>
-            </div>
-          </div>
-          {/* ==== row 1 End ==== */}
-        </>
-    )
+
+    // Adding list item After that it has to initialize 0
+    todoNameElement.current.value = "";
+    dueDateElement.current.value = ""
+    
+  };
+  return (
+    <>
+      {/* ==== row 1 start ==== */}
+      <form action=''
+        className={`row ${style["kgrow"]} ${style["inputItem"]}`}
+        onSubmit={handleAddButtonClicked}
+      >
+        <div className={`col-6 }`}>
+          <input
+            type="text"
+            name=""
+            placeholder="Enter Todo Here"
+            id=""
+            ref={todoNameElement}
+          />
+        </div>
+        <div className={`col-4 }`}>
+          <input
+            type="date"
+            name=""
+            id=""
+            
+            ref={dueDateElement}
+          />
+        </div>
+        <div className="col-2">
+          <button
+            type="Submit"
+            className={`btn btn-success ${style["kgbutton"]}`}
+          >
+            <MdFormatListBulletedAdd className={style.add} />
+          </button>
+        </div>
+      </form>
+      {/* ==== row 1 End ==== */}
+    </>
+  );
 }
 export default AddTodo;

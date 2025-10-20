@@ -1,0 +1,15 @@
+h3{
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+.Nice{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+   
+    gap: 0.5rem;
+}
+.Happy{
+    font-size: 2.5rem;
+}
