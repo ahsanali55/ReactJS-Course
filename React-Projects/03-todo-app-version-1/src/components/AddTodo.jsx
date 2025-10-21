@@ -1,9 +1,11 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import style from "./AddTodo.module.css";
 import { MdFormatListBulletedAdd } from "react-icons/md";
+import { TodoItemsContext } from "../store/todo-items-store";
 
-function AddTodo({ onNewItem }) {
-  
+function AddTodo({  }) {
+  const {addNewItem} = useContext(TodoItemsContext);
+
   const todoNameElement = useRef();
   const dueDateElement = useRef();
  
@@ -11,7 +13,7 @@ function AddTodo({ onNewItem }) {
     event.preventDefault();
     const todoName = todoNameElement.current.value;
     const dueDate = dueDateElement.current.value;
-    onNewItem(todoName, dueDate);
+    addNewItem(todoName, dueDate);  // callBack function
 
     // Adding list item After that it has to initialize 0
     todoNameElement.current.value = "";
