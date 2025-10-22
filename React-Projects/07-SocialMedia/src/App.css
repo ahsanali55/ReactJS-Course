@@ -1,0 +1,16 @@
+.app-container{
+    display: flex;
+    
+}
+.content{
+    width: 100%;
+}
+.sidebar{
+    min-height: 800px;
+}
+.post-card{
+    margin: 20px 50px;
+}
+.hashtag{
+    margin-inline: 3px;
+}
