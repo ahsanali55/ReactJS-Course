@@ -7,22 +7,21 @@ import "./App.css";
 import CreatePost from "./components/CreatePost";
 import PostList from "./components/PostList";
 import PostListProvider from "./store/post-list-store";
-import WelcomeMessage from "../../07-SocialMedia-version2/src/assets/WelcomeMessage";
 
 function App() {
-  const [selectedTab, setSelectedTab] = useState("Home");
+  const [selectedTab, setSelectedTab] = useState("Home")
   return (
     <PostListProvider>
-      <WelcomeMessage />
 
-      <div className="app-container">
-        <Sidebar selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-        <div className="content">
-          <Header />
-          {selectedTab === "Home" ? <PostList /> : <CreatePost />}
-          <Footer />
-        </div>
+    <div className="app-container">
+      <Sidebar selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+      <div className="content">
+      <Header />
+      {selectedTab === 'Home' ? <PostList /> : <CreatePost />}
+      
+      <Footer />
       </div>
+    </div>
     </PostListProvider>
   );
 }
