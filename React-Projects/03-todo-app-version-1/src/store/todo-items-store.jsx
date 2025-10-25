@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+import { useCallback } from "react";
 import { Children, createContext, useReducer } from "react";
 
 export const TodoItemsContext = createContext([{
@@ -11,6 +13,7 @@ export const TodoItemsContext = createContext([{
 let todoItemReducer = (currTodoItems, action) => {
 
   let newTodoItems = currTodoItems;
+
   if (action.type === "NEW_ITEM"){
     newTodoItems = [
       ...currTodoItems, {name: action.payload.itemName, 
@@ -18,6 +21,7 @@ let todoItemReducer = (currTodoItems, action) => {
     ]
   }
   else if (action.type === "DELETE_ITEM"){
+
     newTodoItems = currTodoItems.filter(item => {
       return (item.name !== action.payload.todoName)
     });
@@ -30,7 +34,7 @@ const TodoItemContextProvider = (props) => {
   const [todoItems, dispatchTodoItems] = useReducer(todoItemReducer, [])
 
   // Add new item in Todo Items Method
-  const addNewItem = (itemName, itemDueDate) => {
+  const addNewItem = useCallback((itemName, itemDueDate) => {
       
     const newItemAction = {
       type: "NEW_ITEM",
@@ -41,16 +45,20 @@ const TodoItemContextProvider = (props) => {
     };
     // dispatch Action
   dispatchTodoItems(newItemAction);
+  }, [dispatchTodoItems])
+
+const contextvalue = useMemo(() => {
+  return {
+    todoItems,
+    addNewItem,
+    dispatchTodoItems
   }
+}, [todoItems])
+
   return(
     <>
      <TodoItemsContext.Provider 
-     value={{
-        // key values are same
-        todoItems,  // Array
-        addNewItem, // Methods
-        dispatchTodoItems
-      }}>
+     value={contextvalue}>
         {props.children}
       </TodoItemsContext.Provider>
     </>

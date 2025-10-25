@@ -9,7 +9,7 @@ function AddTodo({  }) {
   const todoNameElement = useRef();
   const dueDateElement = useRef();
  
-  const handleAddButtonClicked = (event) => {
+  const handleAddButtonClicked = React.memo((event) => {
     event.preventDefault();
     const todoName = todoNameElement.current.value;
     const dueDate = dueDateElement.current.value;
@@ -19,7 +19,7 @@ function AddTodo({  }) {
     todoNameElement.current.value = "";
     dueDateElement.current.value = ""
     
-  };
+  });
   return (
     <>
       {/* ==== row 1 start ==== */}
