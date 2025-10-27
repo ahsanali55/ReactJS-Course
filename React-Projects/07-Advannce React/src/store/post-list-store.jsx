@@ -54,7 +54,7 @@ const PostListProvider = ({ children }) => {
         posts,
       },
     });
-    console.log("functioncalled")
+  
   };
 
   const deletePost = (Id) => {
