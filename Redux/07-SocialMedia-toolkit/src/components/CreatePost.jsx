@@ -1,8 +1,11 @@
-import React, { useContext, useRef } from "react";
-import {PostList as PostListData} from "../store/post-list-store";
+import React, { useRef } from "react";
+
+import { useDispatch } from "react-redux";
+import  { postlistAction } from "../store";
 
 const CreatePost = () => {
-    const { addPost } = useContext(PostListData);
+    const dispatch = useDispatch();
+
     const userIdElement = useRef();
     const postTitleElement = useRef();
     const postBodyElement = useRef();
@@ -12,18 +15,19 @@ const CreatePost = () => {
   const handleSumit = (event) => {
     event.preventDefault();
     const userId = userIdElement.current.value;
-    const postTitle = postTitleElement.current.value;
-    const postBody = postBodyElement.current.value;
+    const title = postTitleElement.current.value;
+    const body = postBodyElement.current.value;
     const reactions = reactionsElement.current.value;
     const tags = tagsElement.current.value.split(" ");
     
-    addPost(
+    dispatch(postlistAction.addPostList({
       userId,
-      postTitle,
-      postBody,
+      title,
+      body,
       reactions,
       tags
-    );
+  }));
+
     userIdElement.current.value = "";
     postTitleElement.current.value = "";
     postBodyElement.current.value = "";

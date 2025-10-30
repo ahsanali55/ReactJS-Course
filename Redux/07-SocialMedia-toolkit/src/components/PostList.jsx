@@ -1,16 +1,20 @@
-import React, { useContext } from "react";
+
 import Post from "./Post";
 import { PostList as PostListData } from "../store/post-list-store";
+import { useSelector } from "react-redux";
+
 
 
 const PostList = () => {
-  const { postList } = useContext(PostListData);
+  const  { postlist }   = useSelector((state) => state.postLists )
 
   return (
     <>
     
-      {postList.map((post) => (
-        <Post key={post.id} post={post} />
+      {Array.from(postlist).map((post) => (
+       
+
+        <Post key={post.userId} post={post} />
       ))}
     </>
   );
